@@ -1,9 +1,9 @@
 // ignore_for_file: avoid_print
 
 import 'package:flutter/material.dart';
-import 'package:weather_api/entry_page.dart';
-import 'package:weather_api/front_page.dart';
-import 'package:weather_api/settings.dart';
+import 'package:weather_api/screens/location_access.dart';
+import 'package:weather_api/screens/weather_search.dart';
+import 'package:weather_api/screens/settings.dart';
 
 void main() {
   // ignore: prefer_const_constructors

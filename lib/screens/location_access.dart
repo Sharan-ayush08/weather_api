@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:weather_api/front_page.dart';
+import 'package:weather_api/screens/weather_search.dart';
 
 // ignore: camel_case_types
 class Front_ extends StatefulWidget {

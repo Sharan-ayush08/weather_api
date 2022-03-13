@@ -2,7 +2,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:weather_api/model.dart';
+import 'package:weather_api/models/model.dart';
 
 class DataServices {
   Future<WeatherResponse> getWeather(String city) async {

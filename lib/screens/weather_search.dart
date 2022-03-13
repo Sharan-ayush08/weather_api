@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:weather_api/data_services.dart';
-import 'package:weather_api/model.dart';
+import 'package:weather_api/models/model.dart';
 
 class AllowAccess extends StatefulWidget {
   const AllowAccess({Key? key}) : super(key: key);
