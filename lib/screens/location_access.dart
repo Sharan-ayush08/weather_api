@@ -57,12 +57,16 @@ class _Front_State extends State<Front_> {
           ),
         ),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          // mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("Welcome to the Clima App",
-                style: GoogleFonts.pacifico(
-                    textStyle:
-                        const TextStyle(fontSize: 25, color: Colors.white))),
+            Padding(
+              padding: const EdgeInsets.only(top: 250),
+              child: Text("Welcome to the Clima App",
+                  style: GoogleFonts.pacifico(
+                      textStyle:
+                          const TextStyle(fontSize: 25, color: Colors.white))),
+            ),
+            SizedBox(height: 50),
             ElevatedButton(
                 onPressed: () {
                   determinePosition();

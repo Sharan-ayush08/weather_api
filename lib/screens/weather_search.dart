@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:weather_api/data_services.dart';
+// import 'package:weather_api/model.dart';
 import 'package:weather_api/models/model.dart';
 
 class AllowAccess extends StatefulWidget {
@@ -21,7 +22,7 @@ class _AllowAccessState extends State<AllowAccess> {
         width: double.infinity,
         decoration: const BoxDecoration(
           image: DecorationImage(
-              fit: BoxFit.fill, image: AssetImage('images/assets/bg1.jpg')),
+              fit: BoxFit.fill, image: AssetImage('images/assets/clear.png')),
         ),
         child: SingleChildScrollView(
           child: Column(
