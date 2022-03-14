@@ -10,7 +10,7 @@ class DataServices {
     final queryParmameter = {
       'q': city,
       'appid': '98e8dfcf4ea2319b693eb4c58b2a6018',
-      'units': 'imperial'
+      'units': 'metric'
     };
     final url = Uri.https(
         'api.openweathermap.org', '/data/2.5/weather', queryParmameter);

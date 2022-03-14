@@ -14,6 +14,19 @@ class _AllowAccessState extends State<AllowAccess> {
   final _cityTextController = TextEditingController();
   final _dataService = DataServices();
   WeatherResponse? _response;
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
+  int temprature = 0;
+  String location = "Mumbai";
+
+  void validate() {
+    if (formKey.currentState!.validate()) {
+      print("Validated");
+    } else {
+      print("Not Validated");
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,40 +38,62 @@ class _AllowAccessState extends State<AllowAccess> {
               fit: BoxFit.fill, image: AssetImage('images/assets/clear.png')),
         ),
         child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              if (_response != null)
-                Column(
+          child: Padding(
+            padding: const EdgeInsets.all(50),
+            child: Container(
+              child: Form(
+                key: formKey,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.network(_response!.iconUrl, scale: 0.5),
-                    Text(
-                      '${_response!.tempInfo.temprature}◦',
-                      style: const TextStyle(fontSize: 40, color: Colors.white),
+                    if (_response != null)
+                      Column(
+                        children: [
+                          Image.network(_response!.iconUrl, scale: 0.5),
+                          Text(
+                            '${_response!.tempInfo.temprature.round()}℃',
+                            style: const TextStyle(
+                                fontSize: 40, color: Colors.white),
+                          ),
+                          Text(
+                            _response!.weatherInfo.description,
+                            style: const TextStyle(
+                                color: Colors.white, fontSize: 15),
+                          )
+                        ],
+                      ),
+                    const Padding(padding: EdgeInsets.symmetric(vertical: 50)),
+                    SizedBox(
+                      width: 280,
+                      child: TextFormField(
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return 'Required';
+                          } else {
+                            return null;
+                          }
+                        },
+                        controller: _cityTextController,
+                        decoration: InputDecoration(
+                            labelText: 'Search City',
+                            labelStyle: TextStyle(color: Colors.white),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(25.0))),
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(color: Colors.white),
+                      ),
                     ),
-                    Text(
-                      _response!.weatherInfo.description,
-                      style: const TextStyle(color: Colors.white, fontSize: 15),
-                    )
+                    const SizedBox(height: 25),
+                    ElevatedButton(
+                        onPressed: () {
+                          _search;
+                          validate();
+                        },
+                        child: const Text('Search'))
                   ],
                 ),
-              const Padding(padding: EdgeInsets.symmetric(vertical: 50)),
-              SizedBox(
-                width: 150,
-                child: TextField(
-                  controller: _cityTextController,
-                  decoration: const InputDecoration(
-                      labelText: 'Search City',
-                      labelStyle: TextStyle(color: Colors.white)),
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(color: Colors.white),
-                ),
               ),
-              const SizedBox(
-                height: 5,
-              ),
-              ElevatedButton(onPressed: _search, child: const Text('Search'))
-            ],
+            ),
           ),
         ),
       ),
